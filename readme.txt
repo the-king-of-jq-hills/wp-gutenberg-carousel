@@ -16,6 +16,6 @@ Languages : React and SCSS
 == Changelog ==
 
 = 0.1.0 =
-* Release
+* First Commit
 
 

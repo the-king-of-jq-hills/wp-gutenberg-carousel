@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 define( 'WPG_CAROUSEL_DIR', plugin_dir_path( __FILE__ ) );
-define( 'WPG_SHOTS_CAROUSEL_URL', plugins_url( '/', __FILE__ ) );
+define( 'WPG_CAROUSEL_URL', plugins_url( '/', __FILE__ ) );
 define( 'WPG_CAROUSEL_VERSION', '1.0.2' );
 define( 'WPG_CAROUSEL_FILE', __FILE__ );
 
