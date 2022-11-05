@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "create-block/wp-gutenberg-carusel",
+	"version": "0.1.0",
+	"title": "WPG Carousel",
+	"category": "media",
+	"icon": "image-flip-horizontal",
+	"description": "A gutenberg block carousel",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "wp-gutenberg-carousel",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"attributes": {
+		"contentAlign": { 
+			"type": "string",
+			"default": "center"
+		},
+		"numberOfColumns": {
+			"type": "number",
+			"default": 1
+		}
+
+	}	
+}
