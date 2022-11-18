@@ -21,7 +21,7 @@
     },
     "numberOfColumns": {
       "type": "number",
-      "default": 1
+      "default": 3
     },
     "wpgCarousel": {
       "type": "array",

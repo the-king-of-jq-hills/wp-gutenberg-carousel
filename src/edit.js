@@ -1,5 +1,12 @@
 import { __ } from '@wordpress/i18n';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 import { 
 	useBlockProps, 
 	AlignmentControl, 
@@ -56,10 +63,11 @@ export default function Edit({attributes, setAttributes, className}) {
 			wpgCarousel: [
 				...trywpgCarousel,
 				{ 	
-					itemTitle: "Title "+(wpgCarousel.length+1), 
-					itemDetails: "Description "+(wpgCarousel.length+1), 
+					itemTitle: "Slide Title", 
+					itemDetails: "Slide Description... ", 
 					itemIndex: wpgCarousel.length,
-					imageURL: noImage
+					imageURL: noImage,
+					linkURL: "http://www.example.com",
 				}
 			]
 		})	
@@ -72,6 +80,18 @@ export default function Edit({attributes, setAttributes, className}) {
 		);		
 		setAttributes( { wpgCarousel : newItemContent } ); 
     };
+
+	const slides = wpgCarousel.map((slide, index) => {
+		return (
+			<SwiperSlide key={ `slide-${index}` } style={ { backgroundImage: "url("+slide.imageURL+")" } } >
+				
+				<div className="wpg-content-wrap" style={{textAlign: contentAlign }}>
+					<h2 className='wpg-slide-title'>{ slide.itemTitle }</h2>					
+				</div>
+				
+			</SwiperSlide>
+		);
+	})
 
 	return (
 		<>
@@ -94,7 +114,7 @@ export default function Edit({attributes, setAttributes, className}) {
 							value={ numberOfColumns }
 							onChange={ onChangenumberOfColumns } 								
 							min={ 1 }
-							max={ 4 }
+							max={ 5 }
 						/>
 					</PanelRow>
 				
@@ -106,41 +126,49 @@ export default function Edit({attributes, setAttributes, className}) {
 					
 					{wpgCarousel.map((slide) => (
 						<div className='wpg-repeater-group'>
-						<PanelRow>						
-							<TextControl
-								label={__("Title", "wp-gutenberg-carusel")}
-								className={className}
-								value={slide.itemTitle}
-								onChange={(itemContent) =>
-									onChangeItemContent(itemContent, slide.itemIndex, "itemTitle")
-								}
-							/>
-						</PanelRow>	
-						<PanelRow>	
-							<TextControl
-								label={__("Description", "wp-gutenberg-carusel")}
-								className={className}
-								value={slide.itemDetails}
-								onChange={(itemContent) =>
-									onChangeItemContent(itemContent, slide.itemIndex, "itemDetails")
-								}
-							/>
-							
-						</PanelRow>
-						<PanelRow>
-							<MediaPlaceholder
-								onSelect = {( el ) => {
-										onChangeItemContent(el.url, slide.itemIndex, "imageURL")
-										//setAttributes( { theImage: el.url } );
+							<PanelRow>						
+								<TextControl
+									label={__("Title", "wp-gutenberg-carusel")}
+									value={slide.itemTitle}
+									onChange={(itemContent) =>
+										onChangeItemContent(itemContent, slide.itemIndex, "itemTitle")
 									}
-								}
-								allowedTypes = { [ 'image' ] }
-								multiple = { false }
-								labels = { { title: 'The Image' } }
-							>
-								"extra content"
-							</MediaPlaceholder>					
-						</PanelRow>
+								/>
+							</PanelRow>	
+							<PanelRow>
+								<PlainText
+									label={__("Description...", "wp-gutenberg-carusel")}
+									value={slide.itemDetails}
+									onChange={(itemContent) =>
+										onChangeItemContent(itemContent, slide.itemIndex, "itemDetails")
+									}
+								/>
+								
+							</PanelRow>
+							<PanelRow>
+								<MediaPlaceholder
+									style={{  backgroundImage: `url(${slide.imageURL})` }}
+									onSelect = {( el ) => {
+											onChangeItemContent(el.url, slide.itemIndex, "imageURL")
+											//setAttributes( { theImage: el.url } );
+										}
+									}
+									allowedTypes = { [ 'image' ] }
+									multiple = { false }
+									labels = { { title: 'Slide Image' } }
+									className='wpg-imgholder'
+								>
+								</MediaPlaceholder>					
+							</PanelRow>
+							<PanelRow>
+								<TextControl
+									label={__("Slide Link", "wp-gutenberg-carusel")}
+									value={slide.linkURL}
+									onChange={(itemContent) =>
+										onChangeItemContent(itemContent, slide.itemIndex, "linkURL")
+									}
+								/>							
+							</PanelRow>
 						</div>
 					))}
 					
@@ -162,10 +190,16 @@ export default function Edit({attributes, setAttributes, className}) {
 				</PanelBody>
 			</InspectorControls>
 			<div className='wpgc-blockwrap' { ...useBlockProps() }>
-				{ __(
-					'WP Gutenberg Carusel',
-					'wp-gutenberg-carusel'
-				) }
+				<Swiper 
+					modules={[Navigation, Pagination, Scrollbar, A11y]}
+					navigation
+					pagination={{ clickable: true }}
+					scrollbar={{ draggable: true }}
+					slidesPerView={numberOfColumns} 
+					spaceBetween= {32}
+				>
+					{slides}
+				</Swiper>
 			</div>
 		</>
 	);

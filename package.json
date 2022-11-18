@@ -18,6 +18,7 @@
 		"@wordpress/scripts": "^24.5.0"
 	},
 	"dependencies": {
-		"immer": "^9.0.16"
+		"immer": "^9.0.16",
+		"swiper": "^8.4.4"
 	}
 }
