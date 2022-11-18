@@ -6,7 +6,7 @@ import {
 	BlockControls,
 	InspectorControls,
 	PanelColorSettings,
-	MediaUpload,
+	MediaPlaceholder,
 	RichText, 
 	PlainText,
 } from '@wordpress/block-editor';
@@ -21,9 +21,12 @@ import {
     __experimentalRadioGroup as RadioGroup,
 	Button,
 	IconButton,
+	Dashicon,
 } from '@wordpress/components';
 
 import './editor.scss';
+import noImage from './missing.webp';
+
 
 /**
  * The edit function 
@@ -52,7 +55,12 @@ export default function Edit({attributes, setAttributes, className}) {
 		setAttributes({
 			wpgCarousel: [
 				...trywpgCarousel,
-				{ itemTitle: "Title "+(wpgCarousel.length+1), itemDetails: "Description "+(wpgCarousel.length+1), itemIndex: wpgCarousel.length }
+				{ 	
+					itemTitle: "Title "+(wpgCarousel.length+1), 
+					itemDetails: "Description "+(wpgCarousel.length+1), 
+					itemIndex: wpgCarousel.length,
+					imageURL: noImage
+				}
 			]
 		})	
 	}	
@@ -97,19 +105,20 @@ export default function Edit({attributes, setAttributes, className}) {
 				>					
 					
 					{wpgCarousel.map((slide) => (
-						<PanelRow>
-						
+						<div className='wpg-repeater-group'>
+						<PanelRow>						
 							<TextControl
-								label="Title"
+								label={__("Title", "wp-gutenberg-carusel")}
 								className={className}
 								value={slide.itemTitle}
 								onChange={(itemContent) =>
 									onChangeItemContent(itemContent, slide.itemIndex, "itemTitle")
 								}
 							/>
-							
+						</PanelRow>	
+						<PanelRow>	
 							<TextControl
-								label="Description"
+								label={__("Description", "wp-gutenberg-carusel")}
 								className={className}
 								value={slide.itemDetails}
 								onChange={(itemContent) =>
@@ -118,21 +127,36 @@ export default function Edit({attributes, setAttributes, className}) {
 							/>
 							
 						</PanelRow>
+						<PanelRow>
+							<MediaPlaceholder
+								onSelect = {( el ) => {
+										onChangeItemContent(el.url, slide.itemIndex, "imageURL")
+										//setAttributes( { theImage: el.url } );
+									}
+								}
+								allowedTypes = { [ 'image' ] }
+								multiple = { false }
+								labels = { { title: 'The Image' } }
+							>
+								"extra content"
+							</MediaPlaceholder>					
+						</PanelRow>
+						</div>
 					))}
 					
-					<PanelRow>
-						<input
-							className="button button-secondary"
-							type="button"
-							value={__("Add Item", "wp-gutenberg-carusel")}
-							onClick={ onAddCarouselItem }
-						/>
-						<input
-							className="button button-secondary"
-							type="button"
-							value={__("Remove Item", "wp-gutenberg-carusel")}
-							onClick={ onRemoveCarouselItem }
-						/>												
+					<PanelRow className='wpg-buttons'>
+						<Button
+                            className={ "button button-large" }
+                            onClick={ onAddCarouselItem }
+                        >
+                            {__("Add Item", "wp-gutenberg-carusel")}
+                        </Button>						
+						<Button
+                            className={ "button button-large" }
+                            onClick={ onRemoveCarouselItem }
+                        >
+                            {__("Remove Item", "wp-gutenberg-carusel")}
+                        </Button>										
 					</PanelRow>
 
 				</PanelBody>

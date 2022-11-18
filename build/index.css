@@ -49,4 +49,29 @@ textarea.editor-plain-text.link-plain-text {
   border-radius: 5px;
 }
 
+.wpg-repeater-group {
+  border: 1px solid #3399ff;
+  padding: 6px;
+  margin-bottom: 6px;
+  width: calc(100% - 12px);
+}
+
+.wpg-repeater-group .components-text-control__input {
+  width: 96%;
+}
+
+.wpg-repeater-group .components-panel__row > div {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 100%;
+}
+
+.wpg-buttons {
+  width: 96%;
+}
+
+.wpg-buttons button.button-large {
+  align-self: center;
+}
+
 /*# sourceMappingURL=index.css.map*/
