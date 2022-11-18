@@ -35,11 +35,13 @@ __webpack_require__.r(__webpack_exports__);
 function Edit(_ref) {
   let {
     attributes,
-    setAttributes
+    setAttributes,
+    className
   } = _ref;
   const {
     contentAlign,
-    numberOfColumns
+    numberOfColumns,
+    wpgCarousel
   } = attributes;
   const onChangeContentAlign = newContentAlign => {
     setAttributes({
@@ -49,6 +51,31 @@ function Edit(_ref) {
   const onChangenumberOfColumns = newnumberOfColumns => {
     setAttributes({
       numberOfColumns: newnumberOfColumns
+    });
+  };
+  const onRemoveCarouselItem = () => {
+    const newwpgCarousel = wpgCarousel.slice(0, wpgCarousel.length - 1);
+    setAttributes({
+      wpgCarousel: newwpgCarousel
+    });
+  };
+  const onAddCarouselItem = () => {
+    const trywpgCarousel = JSON.parse(JSON.stringify(wpgCarousel));
+    setAttributes({
+      wpgCarousel: [...trywpgCarousel, {
+        itemTitle: "Title " + (wpgCarousel.length + 1),
+        itemDetails: "Description " + (wpgCarousel.length + 1),
+        itemIndex: wpgCarousel.length
+      }]
+    });
+  };
+  const onChangeItemContent = (itemContent, itemIndex, type) => {
+    const newItemContent = wpgCarousel.map(obj => obj.itemIndex === itemIndex ? {
+      ...obj,
+      [type]: itemContent
+    } : obj);
+    setAttributes({
+      wpgCarousel: newItemContent
     });
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
@@ -72,9 +99,32 @@ function Edit(_ref) {
     onChange: onChangenumberOfColumns,
     min: 1,
     max: 4
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Carousel Items", "wp-gutenberg-carusel"),
+    initialOpen: true
+  }, wpgCarousel.map(slide => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
+    label: "Title",
+    className: className,
+    value: slide.itemTitle,
+    onChange: itemContent => onChangeItemContent(itemContent, slide.itemIndex, "itemTitle")
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
+    label: "Description",
+    className: className,
+    value: slide.itemDetails,
+    onChange: itemContent => onChangeItemContent(itemContent, slide.itemIndex, "itemDetails")
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
+    className: "button button-secondary",
+    type: "button",
+    value: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Add Item", "wp-gutenberg-carusel"),
+    onClick: onAddCarouselItem
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
+    className: "button button-secondary",
+    type: "button",
+    value: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Remove Item", "wp-gutenberg-carusel"),
+    onClick: onRemoveCarouselItem
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     className: "wpgc-blockwrap"
-  }, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)()), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Wp Gutenberg Carusel – hello from the editor!', 'wp-gutenberg-carusel')));
+  }, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)()), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('WP Gutenberg Carusel', 'wp-gutenberg-carusel')));
 }
 
 /***/ }),
@@ -247,7 +297,7 @@ function _extends() {
   \************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"create-block/wp-gutenberg-carusel","version":"0.1.0","title":"WPG Carousel","category":"media","icon":"image-flip-horizontal","description":"A gutenberg block carousel","supports":{"html":false},"textdomain":"wp-gutenberg-carousel","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"contentAlign":{"type":"string","default":"center"},"numberOfColumns":{"type":"number","default":1}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"create-block/wp-gutenberg-carusel","version":"0.1.0","title":"WPG Carousel","category":"media","icon":"image-flip-horizontal","description":"A gutenberg block carousel","supports":{"html":false},"textdomain":"wp-gutenberg-carousel","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"contentAlign":{"type":"string","default":"center"},"numberOfColumns":{"type":"number","default":1},"wpgCarousel":{"type":"array","default":[]},"slideCount":{"type":"number","default":0}}}');
 
 /***/ })
 

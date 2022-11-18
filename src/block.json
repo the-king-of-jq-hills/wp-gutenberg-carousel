@@ -22,6 +22,14 @@
 		"numberOfColumns": {
 			"type": "number",
 			"default": 1
+		},
+		"wpgCarousel": {
+			"type": "array",
+			"default": []
+		},
+		"slideCount": {
+			"type": "number",
+			"default": 0
 		}
 
 	}	

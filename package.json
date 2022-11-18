@@ -16,5 +16,8 @@
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^24.5.0"
+	},
+	"dependencies": {
+		"immer": "^9.0.16"
 	}
 }
