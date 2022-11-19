@@ -25,7 +25,13 @@
 		},
 		"wpgCarousel": {
 			"type": "array",
-			"default": []
+			"default": [{
+				"itemTitle":"Slide Title",
+				"itemDetails":"Slide Description... ",
+				"itemIndex":0,
+				"imageURL":"",
+				"linkURL":"http://www.example.com"
+			}]
 		},
 		"blockAlign": {
 			"type": "string",

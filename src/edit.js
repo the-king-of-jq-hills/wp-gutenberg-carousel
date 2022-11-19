@@ -81,11 +81,18 @@ export default function Edit({attributes, setAttributes, className}) {
     };
 
 	const slides = wpgCarousel.map((slide, index) => {
+
+		if ( slide.imageURL == "" ) {
+			slide.imageURL = noImage;
+		}
+
 		return (
-			<SwiperSlide key={ `slide-${index}` } style={ { backgroundImage: "url("+slide.imageURL+")" } } >
+			<SwiperSlide key={ `slide-${index}` }>
 				
 				<div className="wpg-content-wrap" style={{textAlign: contentAlign }}>
-					<h2 className='wpg-slide-title'>{ slide.itemTitle }</h2>					
+					<div className='wpg-imgbox' style={ { backgroundImage: "url("+slide.imageURL+")" } } ></div>
+					<h2 className='wpg-slide-title'>{ slide.itemTitle }</h2>
+					<div className='wpg-slide-desc'>{ slide.itemDetails }</div>			
 				</div>
 				
 			</SwiperSlide>
