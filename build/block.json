@@ -27,9 +27,9 @@
       "type": "array",
       "default": []
     },
-    "slideCount": {
-      "type": "number",
-      "default": 0
+    "blockAlign": {
+      "type": "string",
+      "default": "none"
     }
   }
 }

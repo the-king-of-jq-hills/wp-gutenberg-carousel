@@ -53,7 +53,8 @@ function Edit(_ref) {
   const {
     contentAlign,
     numberOfColumns,
-    wpgCarousel
+    wpgCarousel,
+    blockAlign
   } = attributes;
   const onChangeContentAlign = newContentAlign => {
     setAttributes({
@@ -168,7 +169,16 @@ function Edit(_ref) {
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Add Item", "wp-gutenberg-carusel")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_9__.Button, {
     className: "button button-large",
     onClick: onRemoveCarouselItem
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Remove Item", "wp-gutenberg-carusel"))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Remove Item", "wp-gutenberg-carusel"))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.BlockControls, {
+    group: "block"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.BlockAlignmentToolbar, {
+    value: blockAlign,
+    onChange: newblockAlign => {
+      setAttributes({
+        blockAlign: newblockAlign
+      });
+    }
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     className: "wpgc-blockwrap"
   }, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.useBlockProps)()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(swiper_react__WEBPACK_IMPORTED_MODULE_3__.Swiper, {
     modules: [swiper__WEBPACK_IMPORTED_MODULE_4__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_4__.Pagination, swiper__WEBPACK_IMPORTED_MODULE_4__.Scrollbar, swiper__WEBPACK_IMPORTED_MODULE_4__.A11y],
@@ -14260,7 +14270,7 @@ __webpack_require__.r(__webpack_exports__);
   \************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"create-block/wp-gutenberg-carusel","version":"0.1.0","title":"WPG Carousel","category":"media","icon":"image-flip-horizontal","description":"A gutenberg block carousel","supports":{"html":false},"textdomain":"wp-gutenberg-carousel","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"contentAlign":{"type":"string","default":"center"},"numberOfColumns":{"type":"number","default":3},"wpgCarousel":{"type":"array","default":[]},"slideCount":{"type":"number","default":0}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"create-block/wp-gutenberg-carusel","version":"0.1.0","title":"WPG Carousel","category":"media","icon":"image-flip-horizontal","description":"A gutenberg block carousel","supports":{"html":false},"textdomain":"wp-gutenberg-carousel","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"contentAlign":{"type":"string","default":"center"},"numberOfColumns":{"type":"number","default":3},"wpgCarousel":{"type":"array","default":[]},"blockAlign":{"type":"string","default":"none"}}}');
 
 /***/ })
 

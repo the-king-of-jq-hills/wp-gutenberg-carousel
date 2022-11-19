@@ -9,13 +9,12 @@ import 'swiper/css/pagination';
 
 import { 
 	useBlockProps, 
-	AlignmentControl, 
 	BlockControls,
 	InspectorControls,
 	PanelColorSettings,
 	MediaPlaceholder,
-	RichText, 
 	PlainText,
+	BlockAlignmentToolbar
 } from '@wordpress/block-editor';
 
 import {
@@ -40,7 +39,7 @@ import noImage from './missing.webp';
  */
 export default function Edit({attributes, setAttributes, className}) {
 
-	const { contentAlign, numberOfColumns, wpgCarousel } = attributes;
+	const { contentAlign, numberOfColumns, wpgCarousel, blockAlign } = attributes;
 
 	const onChangeContentAlign = ( newContentAlign ) => {
 		setAttributes( { contentAlign: newContentAlign 	} )
@@ -92,6 +91,7 @@ export default function Edit({attributes, setAttributes, className}) {
 			</SwiperSlide>
 		);
 	})
+	
 
 	return (
 		<>
@@ -189,6 +189,18 @@ export default function Edit({attributes, setAttributes, className}) {
 
 				</PanelBody>
 			</InspectorControls>
+			
+			{/* Block Controls */}
+			<BlockControls group="block">
+				<BlockAlignmentToolbar
+					value={ blockAlign }
+					onChange={ ( newblockAlign ) => {
+						setAttributes( { blockAlign: newblockAlign } );
+					} }
+				/>
+			</BlockControls>
+			
+			{/* Editor View */}
 			<div className='wpgc-blockwrap' { ...useBlockProps() }>
 				<Swiper 
 					modules={[Navigation, Pagination, Scrollbar, A11y]}
