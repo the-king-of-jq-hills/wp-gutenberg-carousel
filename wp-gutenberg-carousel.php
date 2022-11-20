@@ -4,7 +4,7 @@
  * Description:       A gutenberg carousel block
  * Requires at least: 6.1
  * Requires PHP:      7.0
- * Version:           0.1.0
+ * Version:           1.0.3
  * Author:            marsian
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -21,14 +21,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'WPG_CAROUSEL_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WPG_CAROUSEL_URL', plugins_url( '/', __FILE__ ) );
-define( 'WPG_CAROUSEL_VERSION', '1.0.2' );
+define( 'WPG_CAROUSEL_VERSION', '1.0.3' );
 
-function wpg_carousel_block_styles() {
+
+// enque block assets for back and front
+function wpg_carousel_block_assets() {
     wp_enqueue_style( 'swiper-style',  WPG_CAROUSEL_URL . 'assets/swiper-bundle.min.css', array(), WPG_CAROUSEL_VERSION, false  );
     wp_enqueue_script( 'swiperjs',  WPG_CAROUSEL_URL . 'assets/swiper-bundle.min.js', array(), WPG_CAROUSEL_VERSION, false  );
 	wp_enqueue_script( 'wpgcjs',  WPG_CAROUSEL_URL . 'assets/wpgc-script.js', array(), WPG_CAROUSEL_VERSION, true );
 }
-add_action( 'enqueue_block_assets', 'wpg_carousel_block_styles' );
+add_action( 'enqueue_block_assets', 'wpg_carousel_block_assets' );
+
 
 /**
  * Registers the block using the metadata loaded from the `block.json` 

@@ -1,12 +1,5 @@
 import { __ } from '@wordpress/i18n';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-
 import { 
 	useBlockProps, 
 	BlockControls,
@@ -87,18 +80,42 @@ export default function Edit({attributes, setAttributes, className}) {
 		}
 
 		return (
-			<SwiperSlide key={ `slide-${index}` }>
-				
+			<div className='swiper-slide'>				
 				<div className="wpg-content-wrap" style={{textAlign: contentAlign }}>
 					<div className='wpg-imgbox' style={ { backgroundImage: "url("+slide.imageURL+")" } } ></div>
 					<h2 className='wpg-slide-title'>{ slide.itemTitle }</h2>
 					<div className='wpg-slide-desc'>{ slide.itemDetails }</div>			
-				</div>
-				
-			</SwiperSlide>
+				</div>				
+			</div>
 		);
 	})
 	
+	var swiper = new Swiper(".wpgswiper-e", {
+		pagination: {
+		el: ".swiper-pagination",
+		clickable: true,
+		},
+		navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev",
+		},
+		slidesPerView: wpgcColumns,
+		spaceBetween: 32,
+		a11y: true,
+		breakpoints: {
+			// when window width is >= 320px
+			320: {
+				slidesPerView: 1,
+				spaceBetween: 32,
+			},
+			// when window width is >= 640px
+			768: {
+				slidesPerView: wpgcColumns,
+				spaceBetween: 32,
+			},
+		},
+		keyboard: true,			
+	});
 
 	return (
 		<>
@@ -209,16 +226,14 @@ export default function Edit({attributes, setAttributes, className}) {
 			
 			{/* Editor View */}
 			<div className='wpgc-blockwrap' { ...useBlockProps() }>
-				<Swiper 
-					modules={[Navigation, Pagination, Scrollbar, A11y]}
-					navigation
-					pagination={{ clickable: true }}
-					scrollbar={{ draggable: true }}
-					slidesPerView={numberOfColumns} 
-					spaceBetween= {32}
-				>
-					{slides}
-				</Swiper>
+				<div className='swiper wpgswiper-e' data-columns={numberOfColumns} id='wpgswiper-edit'>
+					<div className='swiper-wrapper'>
+						{slides}
+					</div>
+					<div class="swiper-button-next"></div>
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-pagination"></div>						
+				</div>
 			</div>
 		</>
 	);

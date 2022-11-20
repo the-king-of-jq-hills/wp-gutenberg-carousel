@@ -47,7 +47,7 @@ export default function save( { attributes } ) {
 	{
 		return (
 			<div className='wpgc-blockwrap' { ...useBlockProps.save() }>
-				No Slide In Carousel
+				{ __( "No Slide In Carousel", "wp-gutenberg-carusel" ) }
 			</div>
 		);	
 	}	

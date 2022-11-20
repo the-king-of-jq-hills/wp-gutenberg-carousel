@@ -17,22 +17,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var swiper_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! swiper/react */ "./node_modules/swiper/react/swiper-react.js");
-/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
-/* harmony import */ var swiper_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! swiper/css */ "./node_modules/swiper/swiper.min.css");
-/* harmony import */ var swiper_css_navigation__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! swiper/css/navigation */ "./node_modules/swiper/modules/navigation/navigation.min.css");
-/* harmony import */ var swiper_css_pagination__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! swiper/css/pagination */ "./node_modules/swiper/modules/pagination/pagination.min.css");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
-/* harmony import */ var _missing_webp__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./missing.webp */ "./src/missing.webp");
-
-
-
-
-
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+/* harmony import */ var _missing_webp__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./missing.webp */ "./src/missing.webp");
 
 
 
@@ -79,7 +69,7 @@ function Edit(_ref) {
         itemTitle: "Slide Title",
         itemDetails: "Slide Description... ",
         itemIndex: wpgCarousel.length,
-        imageURL: _missing_webp__WEBPACK_IMPORTED_MODULE_11__,
+        imageURL: _missing_webp__WEBPACK_IMPORTED_MODULE_6__,
         linkURL: "http://www.example.com"
       }]
     });
@@ -95,10 +85,10 @@ function Edit(_ref) {
   };
   const slides = wpgCarousel.map((slide, index) => {
     if (slide.imageURL == "") {
-      slide.imageURL = _missing_webp__WEBPACK_IMPORTED_MODULE_11__;
+      slide.imageURL = _missing_webp__WEBPACK_IMPORTED_MODULE_6__;
     }
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(swiper_react__WEBPACK_IMPORTED_MODULE_3__.SwiperSlide, {
-      key: `slide-${index}`
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "swiper-slide"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "wpg-content-wrap",
       style: {
@@ -115,41 +105,67 @@ function Edit(_ref) {
       className: "wpg-slide-desc"
     }, slide.itemDetails)));
   });
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_9__.PanelBody, {
+  var swiper = new Swiper(".wpgswiper-e", {
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    },
+    slidesPerView: wpgcColumns,
+    spaceBetween: 32,
+    a11y: true,
+    breakpoints: {
+      // when window width is >= 320px
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 32
+      },
+      // when window width is >= 640px
+      768: {
+        slidesPerView: wpgcColumns,
+        spaceBetween: 32
+      }
+    },
+    keyboard: true
+  });
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Carousel Settings", "wp-gutenberg-carusel"),
     initialOpen: true
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_9__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "qpgc-custom-control-label"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Align Content", "wp-gutenberg-carusel")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_9__.__experimentalRadioGroup, {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Align Content", "wp-gutenberg-carusel")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalRadioGroup, {
     label: "Text Align",
     onChange: onChangeContentAlign,
     checked: contentAlign
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_9__.__experimentalRadio, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalRadio, {
     value: "left"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Left", "wp-gutenberg-carusel")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_9__.__experimentalRadio, {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Left", "wp-gutenberg-carusel")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalRadio, {
     value: "center"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Center", "wp-gutenberg-carusel")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_9__.__experimentalRadio, {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Center", "wp-gutenberg-carusel")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalRadio, {
     value: "right"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Right", "wp-gutenberg-carusel")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_9__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_9__.RangeControl, {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Right", "wp-gutenberg-carusel")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Number of Columns", "wp-gutenberg-carusel"),
     value: numberOfColumns,
     onChange: onChangenumberOfColumns,
     min: 1,
     max: 5
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_9__.PanelBody, {
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Carousel Items", "wp-gutenberg-carusel"),
     initialOpen: true
   }, wpgCarousel.map(slide => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "wpg-repeater-group"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_9__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_9__.TextControl, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Title", "wp-gutenberg-carusel"),
     value: slide.itemTitle,
     onChange: itemContent => onChangeItemContent(itemContent, slide.itemIndex, "itemTitle")
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_9__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.PlainText, {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.PlainText, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Description...", "wp-gutenberg-carusel"),
     value: slide.itemDetails,
     onChange: itemContent => onChangeItemContent(itemContent, slide.itemIndex, "itemDetails")
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_9__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.MediaPlaceholder, {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaPlaceholder, {
     style: {
       backgroundImage: `url(${slide.imageURL})`
     },
@@ -164,21 +180,21 @@ function Edit(_ref) {
       title: 'Slide Image'
     },
     className: "wpg-imgholder"
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_9__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_9__.TextControl, {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Slide Link", "wp-gutenberg-carusel"),
     value: slide.linkURL,
     onChange: itemContent => onChangeItemContent(itemContent, slide.itemIndex, "linkURL")
-  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_9__.PanelRow, {
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, {
     className: "wpg-buttons"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_9__.Button, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
     className: "button button-large",
     onClick: onAddCarouselItem
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Add Item", "wp-gutenberg-carusel")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_9__.Button, {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Add Item", "wp-gutenberg-carusel")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
     className: "button button-large",
     onClick: onRemoveCarouselItem
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Remove Item", "wp-gutenberg-carusel"))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.BlockControls, {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Remove Item", "wp-gutenberg-carusel"))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockControls, {
     group: "block"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.BlockAlignmentToolbar, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockAlignmentToolbar, {
     value: blockAlign,
     onChange: newblockAlign => {
       setAttributes({
@@ -187,18 +203,19 @@ function Edit(_ref) {
     }
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     className: "wpgc-blockwrap"
-  }, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.useBlockProps)()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(swiper_react__WEBPACK_IMPORTED_MODULE_3__.Swiper, {
-    modules: [swiper__WEBPACK_IMPORTED_MODULE_4__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_4__.Pagination, swiper__WEBPACK_IMPORTED_MODULE_4__.Scrollbar, swiper__WEBPACK_IMPORTED_MODULE_4__.A11y],
-    navigation: true,
-    pagination: {
-      clickable: true
-    },
-    scrollbar: {
-      draggable: true
-    },
-    slidesPerView: numberOfColumns,
-    spaceBetween: 32
-  }, slides)));
+  }, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "swiper wpgswiper-e",
+    "data-columns": numberOfColumns,
+    id: "wpgswiper-edit"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "swiper-wrapper"
+  }, slides), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    class: "swiper-button-next"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    class: "swiper-button-prev"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    class: "swiper-pagination"
+  }))));
 }
 
 /***/ }),
@@ -321,7 +338,7 @@ function save(_ref) {
   } else {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
       className: "wpgc-blockwrap"
-    }, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save()), "No Slide In Carousel");
+    }, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save()), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("No Slide In Carousel", "wp-gutenberg-carusel"));
   }
 }
 
@@ -394,16 +411,6 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "images/missing.565780e8.webp";
-
-/***/ }),
-
-/***/ "react":
-/*!************************!*\
-  !*** external "React" ***!
-  \************************/
-/***/ (function(module) {
-
-module.exports = window["React"];
 
 /***/ }),
 
@@ -2225,429 +2232,6 @@ function getWindow() {
     return win;
 }
 
-
-
-
-/***/ }),
-
-/***/ "./node_modules/swiper/components-shared/get-changed-params.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/swiper/components-shared/get-changed-params.js ***!
-  \*********************************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getChangedParams": function() { return /* binding */ getChangedParams; }
-/* harmony export */ });
-/* harmony import */ var _params_list_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./params-list.js */ "./node_modules/swiper/components-shared/params-list.js");
-/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils.js */ "./node_modules/swiper/components-shared/utils.js");
-
-
-
-function getChangedParams(swiperParams, oldParams, children, oldChildren, getKey) {
-  const keys = [];
-  if (!oldParams) return keys;
-
-  const addKey = key => {
-    if (keys.indexOf(key) < 0) keys.push(key);
-  };
-
-  if (children && oldChildren) {
-    const oldChildrenKeys = oldChildren.map(getKey);
-    const childrenKeys = children.map(getKey);
-    if (oldChildrenKeys.join('') !== childrenKeys.join('')) addKey('children');
-    if (oldChildren.length !== children.length) addKey('children');
-  }
-
-  const watchParams = _params_list_js__WEBPACK_IMPORTED_MODULE_0__.paramsList.filter(key => key[0] === '_').map(key => key.replace(/_/, ''));
-  watchParams.forEach(key => {
-    if (key in swiperParams && key in oldParams) {
-      if ((0,_utils_js__WEBPACK_IMPORTED_MODULE_1__.isObject)(swiperParams[key]) && (0,_utils_js__WEBPACK_IMPORTED_MODULE_1__.isObject)(oldParams[key])) {
-        const newKeys = Object.keys(swiperParams[key]);
-        const oldKeys = Object.keys(oldParams[key]);
-
-        if (newKeys.length !== oldKeys.length) {
-          addKey(key);
-        } else {
-          newKeys.forEach(newKey => {
-            if (swiperParams[key][newKey] !== oldParams[key][newKey]) {
-              addKey(key);
-            }
-          });
-          oldKeys.forEach(oldKey => {
-            if (swiperParams[key][oldKey] !== oldParams[key][oldKey]) addKey(key);
-          });
-        }
-      } else if (swiperParams[key] !== oldParams[key]) {
-        addKey(key);
-      }
-    }
-  });
-  return keys;
-}
-
-
-
-/***/ }),
-
-/***/ "./node_modules/swiper/components-shared/get-params.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/swiper/components-shared/get-params.js ***!
-  \*************************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getParams": function() { return /* binding */ getParams; }
-/* harmony export */ });
-/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
-/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils.js */ "./node_modules/swiper/components-shared/utils.js");
-/* harmony import */ var _params_list_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./params-list.js */ "./node_modules/swiper/components-shared/params-list.js");
-
-
-
-
-function getParams(obj = {}, splitEvents = true) {
-  const params = {
-    on: {}
-  };
-  const events = {};
-  const passedParams = {};
-  (0,_utils_js__WEBPACK_IMPORTED_MODULE_1__.extend)(params, swiper__WEBPACK_IMPORTED_MODULE_0__["default"].defaults);
-  (0,_utils_js__WEBPACK_IMPORTED_MODULE_1__.extend)(params, swiper__WEBPACK_IMPORTED_MODULE_0__["default"].extendedDefaults);
-  params._emitClasses = true;
-  params.init = false;
-  const rest = {};
-  const allowedParams = _params_list_js__WEBPACK_IMPORTED_MODULE_2__.paramsList.map(key => key.replace(/_/, ''));
-  const plainObj = Object.assign({}, obj);
-  Object.keys(plainObj).forEach(key => {
-    if (typeof obj[key] === 'undefined') return;
-
-    if (allowedParams.indexOf(key) >= 0) {
-      if ((0,_utils_js__WEBPACK_IMPORTED_MODULE_1__.isObject)(obj[key])) {
-        params[key] = {};
-        passedParams[key] = {};
-        (0,_utils_js__WEBPACK_IMPORTED_MODULE_1__.extend)(params[key], obj[key]);
-        (0,_utils_js__WEBPACK_IMPORTED_MODULE_1__.extend)(passedParams[key], obj[key]);
-      } else {
-        params[key] = obj[key];
-        passedParams[key] = obj[key];
-      }
-    } else if (key.search(/on[A-Z]/) === 0 && typeof obj[key] === 'function') {
-      if (splitEvents) {
-        events[`${key[2].toLowerCase()}${key.substr(3)}`] = obj[key];
-      } else {
-        params.on[`${key[2].toLowerCase()}${key.substr(3)}`] = obj[key];
-      }
-    } else {
-      rest[key] = obj[key];
-    }
-  });
-  ['navigation', 'pagination', 'scrollbar'].forEach(key => {
-    if (params[key] === true) params[key] = {};
-    if (params[key] === false) delete params[key];
-  });
-  return {
-    params,
-    passedParams,
-    rest,
-    events
-  };
-}
-
-
-
-/***/ }),
-
-/***/ "./node_modules/swiper/components-shared/mount-swiper.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/swiper/components-shared/mount-swiper.js ***!
-  \***************************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "mountSwiper": function() { return /* binding */ mountSwiper; }
-/* harmony export */ });
-/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils.js */ "./node_modules/swiper/components-shared/utils.js");
-
-
-function mountSwiper({
-  el,
-  nextEl,
-  prevEl,
-  paginationEl,
-  scrollbarEl,
-  swiper
-}, swiperParams) {
-  if ((0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.needsNavigation)(swiperParams) && nextEl && prevEl) {
-    swiper.params.navigation.nextEl = nextEl;
-    swiper.originalParams.navigation.nextEl = nextEl;
-    swiper.params.navigation.prevEl = prevEl;
-    swiper.originalParams.navigation.prevEl = prevEl;
-  }
-
-  if ((0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.needsPagination)(swiperParams) && paginationEl) {
-    swiper.params.pagination.el = paginationEl;
-    swiper.originalParams.pagination.el = paginationEl;
-  }
-
-  if ((0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.needsScrollbar)(swiperParams) && scrollbarEl) {
-    swiper.params.scrollbar.el = scrollbarEl;
-    swiper.originalParams.scrollbar.el = scrollbarEl;
-  }
-
-  swiper.init(el);
-}
-
-
-
-/***/ }),
-
-/***/ "./node_modules/swiper/components-shared/params-list.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/swiper/components-shared/params-list.js ***!
-  \**************************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "paramsList": function() { return /* binding */ paramsList; }
-/* harmony export */ });
-/* underscore in name -> watch for changes */
-const paramsList = ['modules', 'init', '_direction', 'touchEventsTarget', 'initialSlide', '_speed', 'cssMode', 'updateOnWindowResize', 'resizeObserver', 'nested', 'focusableElements', '_enabled', '_width', '_height', 'preventInteractionOnTransition', 'userAgent', 'url', '_edgeSwipeDetection', '_edgeSwipeThreshold', '_freeMode', '_autoHeight', 'setWrapperSize', 'virtualTranslate', '_effect', 'breakpoints', '_spaceBetween', '_slidesPerView', 'maxBackfaceHiddenSlides', '_grid', '_slidesPerGroup', '_slidesPerGroupSkip', '_slidesPerGroupAuto', '_centeredSlides', '_centeredSlidesBounds', '_slidesOffsetBefore', '_slidesOffsetAfter', 'normalizeSlideIndex', '_centerInsufficientSlides', '_watchOverflow', 'roundLengths', 'touchRatio', 'touchAngle', 'simulateTouch', '_shortSwipes', '_longSwipes', 'longSwipesRatio', 'longSwipesMs', '_followFinger', 'allowTouchMove', '_threshold', 'touchMoveStopPropagation', 'touchStartPreventDefault', 'touchStartForcePreventDefault', 'touchReleaseOnEdges', 'uniqueNavElements', '_resistance', '_resistanceRatio', '_watchSlidesProgress', '_grabCursor', 'preventClicks', 'preventClicksPropagation', '_slideToClickedSlide', '_preloadImages', 'updateOnImagesReady', '_loop', '_loopAdditionalSlides', '_loopedSlides', '_loopedSlidesLimit', '_loopFillGroupWithBlank', 'loopPreventsSlide', '_rewind', '_allowSlidePrev', '_allowSlideNext', '_swipeHandler', '_noSwiping', 'noSwipingClass', 'noSwipingSelector', 'passiveListeners', 'containerModifierClass', 'slideClass', 'slideBlankClass', 'slideActiveClass', 'slideDuplicateActiveClass', 'slideVisibleClass', 'slideDuplicateClass', 'slideNextClass', 'slideDuplicateNextClass', 'slidePrevClass', 'slideDuplicatePrevClass', 'wrapperClass', 'runCallbacksOnInit', 'observer', 'observeParents', 'observeSlideChildren', // modules
-'a11y', '_autoplay', '_controller', 'coverflowEffect', 'cubeEffect', 'fadeEffect', 'flipEffect', 'creativeEffect', 'cardsEffect', 'hashNavigation', 'history', 'keyboard', 'lazy', 'mousewheel', '_navigation', '_pagination', 'parallax', '_scrollbar', '_thumbs', 'virtual', 'zoom'];
-
-
-/***/ }),
-
-/***/ "./node_modules/swiper/components-shared/update-on-virtual-data.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/swiper/components-shared/update-on-virtual-data.js ***!
-  \*************************************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "updateOnVirtualData": function() { return /* binding */ updateOnVirtualData; }
-/* harmony export */ });
-const updateOnVirtualData = swiper => {
-  if (!swiper || swiper.destroyed || !swiper.params.virtual || swiper.params.virtual && !swiper.params.virtual.enabled) return;
-  swiper.updateSlides();
-  swiper.updateProgress();
-  swiper.updateSlidesClasses();
-
-  if (swiper.lazy && swiper.params.lazy.enabled) {
-    swiper.lazy.load();
-  }
-
-  if (swiper.parallax && swiper.params.parallax && swiper.params.parallax.enabled) {
-    swiper.parallax.setTranslate();
-  }
-};
-
-/***/ }),
-
-/***/ "./node_modules/swiper/components-shared/update-swiper.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/swiper/components-shared/update-swiper.js ***!
-  \****************************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "updateSwiper": function() { return /* binding */ updateSwiper; }
-/* harmony export */ });
-/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils.js */ "./node_modules/swiper/components-shared/utils.js");
-
-
-function updateSwiper({
-  swiper,
-  slides,
-  passedParams,
-  changedParams,
-  nextEl,
-  prevEl,
-  scrollbarEl,
-  paginationEl
-}) {
-  const updateParams = changedParams.filter(key => key !== 'children' && key !== 'direction');
-  const {
-    params: currentParams,
-    pagination,
-    navigation,
-    scrollbar,
-    virtual,
-    thumbs
-  } = swiper;
-  let needThumbsInit;
-  let needControllerInit;
-  let needPaginationInit;
-  let needScrollbarInit;
-  let needNavigationInit;
-
-  if (changedParams.includes('thumbs') && passedParams.thumbs && passedParams.thumbs.swiper && currentParams.thumbs && !currentParams.thumbs.swiper) {
-    needThumbsInit = true;
-  }
-
-  if (changedParams.includes('controller') && passedParams.controller && passedParams.controller.control && currentParams.controller && !currentParams.controller.control) {
-    needControllerInit = true;
-  }
-
-  if (changedParams.includes('pagination') && passedParams.pagination && (passedParams.pagination.el || paginationEl) && (currentParams.pagination || currentParams.pagination === false) && pagination && !pagination.el) {
-    needPaginationInit = true;
-  }
-
-  if (changedParams.includes('scrollbar') && passedParams.scrollbar && (passedParams.scrollbar.el || scrollbarEl) && (currentParams.scrollbar || currentParams.scrollbar === false) && scrollbar && !scrollbar.el) {
-    needScrollbarInit = true;
-  }
-
-  if (changedParams.includes('navigation') && passedParams.navigation && (passedParams.navigation.prevEl || prevEl) && (passedParams.navigation.nextEl || nextEl) && (currentParams.navigation || currentParams.navigation === false) && navigation && !navigation.prevEl && !navigation.nextEl) {
-    needNavigationInit = true;
-  }
-
-  const destroyModule = mod => {
-    if (!swiper[mod]) return;
-    swiper[mod].destroy();
-
-    if (mod === 'navigation') {
-      currentParams[mod].prevEl = undefined;
-      currentParams[mod].nextEl = undefined;
-      swiper[mod].prevEl = undefined;
-      swiper[mod].nextEl = undefined;
-    } else {
-      currentParams[mod].el = undefined;
-      swiper[mod].el = undefined;
-    }
-  };
-
-  updateParams.forEach(key => {
-    if ((0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.isObject)(currentParams[key]) && (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.isObject)(passedParams[key])) {
-      (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.extend)(currentParams[key], passedParams[key]);
-    } else {
-      const newValue = passedParams[key];
-
-      if ((newValue === true || newValue === false) && (key === 'navigation' || key === 'pagination' || key === 'scrollbar')) {
-        if (newValue === false) {
-          destroyModule(key);
-        }
-      } else {
-        currentParams[key] = passedParams[key];
-      }
-    }
-  });
-
-  if (updateParams.includes('controller') && !needControllerInit && swiper.controller && swiper.controller.control && currentParams.controller && currentParams.controller.control) {
-    swiper.controller.control = currentParams.controller.control;
-  }
-
-  if (changedParams.includes('children') && slides && virtual && currentParams.virtual.enabled) {
-    virtual.slides = slides;
-    virtual.update(true);
-  } else if (changedParams.includes('children') && swiper.lazy && swiper.params.lazy.enabled) {
-    swiper.lazy.load();
-  }
-
-  if (needThumbsInit) {
-    const initialized = thumbs.init();
-    if (initialized) thumbs.update(true);
-  }
-
-  if (needControllerInit) {
-    swiper.controller.control = currentParams.controller.control;
-  }
-
-  if (needPaginationInit) {
-    if (paginationEl) currentParams.pagination.el = paginationEl;
-    pagination.init();
-    pagination.render();
-    pagination.update();
-  }
-
-  if (needScrollbarInit) {
-    if (scrollbarEl) currentParams.scrollbar.el = scrollbarEl;
-    scrollbar.init();
-    scrollbar.updateSize();
-    scrollbar.setTranslate();
-  }
-
-  if (needNavigationInit) {
-    if (nextEl) currentParams.navigation.nextEl = nextEl;
-    if (prevEl) currentParams.navigation.prevEl = prevEl;
-    navigation.init();
-    navigation.update();
-  }
-
-  if (changedParams.includes('allowSlideNext')) {
-    swiper.allowSlideNext = passedParams.allowSlideNext;
-  }
-
-  if (changedParams.includes('allowSlidePrev')) {
-    swiper.allowSlidePrev = passedParams.allowSlidePrev;
-  }
-
-  if (changedParams.includes('direction')) {
-    swiper.changeDirection(passedParams.direction, false);
-  }
-
-  swiper.update();
-}
-
-
-
-/***/ }),
-
-/***/ "./node_modules/swiper/components-shared/utils.js":
-/*!********************************************************!*\
-  !*** ./node_modules/swiper/components-shared/utils.js ***!
-  \********************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "extend": function() { return /* binding */ extend; },
-/* harmony export */   "isObject": function() { return /* binding */ isObject; },
-/* harmony export */   "needsNavigation": function() { return /* binding */ needsNavigation; },
-/* harmony export */   "needsPagination": function() { return /* binding */ needsPagination; },
-/* harmony export */   "needsScrollbar": function() { return /* binding */ needsScrollbar; },
-/* harmony export */   "uniqueClasses": function() { return /* binding */ uniqueClasses; }
-/* harmony export */ });
-function isObject(o) {
-  return typeof o === 'object' && o !== null && o.constructor && Object.prototype.toString.call(o).slice(8, -1) === 'Object';
-}
-
-function extend(target, src) {
-  const noExtend = ['__proto__', 'constructor', 'prototype'];
-  Object.keys(src).filter(key => noExtend.indexOf(key) < 0).forEach(key => {
-    if (typeof target[key] === 'undefined') target[key] = src[key];else if (isObject(src[key]) && isObject(target[key]) && Object.keys(src[key]).length > 0) {
-      if (src[key].__swiper__) target[key] = src[key];else extend(target[key], src[key]);
-    } else {
-      target[key] = src[key];
-    }
-  });
-}
-
-function needsNavigation(params = {}) {
-  return params.navigation && typeof params.navigation.nextEl === 'undefined' && typeof params.navigation.prevEl === 'undefined';
-}
-
-function needsPagination(params = {}) {
-  return params.pagination && typeof params.pagination.el === 'undefined';
-}
-
-function needsScrollbar(params = {}) {
-  return params.scrollbar && typeof params.scrollbar.el === 'undefined';
-}
-
-function uniqueClasses(classNames = '') {
-  const classes = classNames.split(' ').map(c => c.trim()).filter(c => !!c);
-  const unique = [];
-  classes.forEach(c => {
-    if (unique.indexOf(c) < 0) unique.push(c);
-  });
-  return unique.join(' ');
-}
 
 
 
@@ -12940,630 +12524,6 @@ function Zoom({
 
 /***/ }),
 
-/***/ "./node_modules/swiper/react/context.js":
-/*!**********************************************!*\
-  !*** ./node_modules/swiper/react/context.js ***!
-  \**********************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SwiperContext": function() { return /* binding */ SwiperContext; },
-/* harmony export */   "SwiperSlideContext": function() { return /* binding */ SwiperSlideContext; },
-/* harmony export */   "useSwiper": function() { return /* binding */ useSwiper; },
-/* harmony export */   "useSwiperSlide": function() { return /* binding */ useSwiperSlide; }
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-
-const SwiperSlideContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(null);
-const useSwiperSlide = () => {
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(SwiperSlideContext);
-};
-const SwiperContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(null);
-const useSwiper = () => {
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(SwiperContext);
-};
-
-/***/ }),
-
-/***/ "./node_modules/swiper/react/get-children.js":
-/*!***************************************************!*\
-  !*** ./node_modules/swiper/react/get-children.js ***!
-  \***************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getChildren": function() { return /* binding */ getChildren; }
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-
-
-function isChildSwiperSlide(child) {
-  return child.type && child.type.displayName && child.type.displayName.includes('SwiperSlide');
-}
-
-function processChildren(c) {
-  const slides = [];
-  react__WEBPACK_IMPORTED_MODULE_0__.Children.toArray(c).forEach(child => {
-    if (isChildSwiperSlide(child)) {
-      slides.push(child);
-    } else if (child.props && child.props.children) {
-      processChildren(child.props.children).forEach(slide => slides.push(slide));
-    }
-  });
-  return slides;
-}
-
-function getChildren(c) {
-  const slides = [];
-  const slots = {
-    'container-start': [],
-    'container-end': [],
-    'wrapper-start': [],
-    'wrapper-end': []
-  };
-  react__WEBPACK_IMPORTED_MODULE_0__.Children.toArray(c).forEach(child => {
-    if (isChildSwiperSlide(child)) {
-      slides.push(child);
-    } else if (child.props && child.props.slot && slots[child.props.slot]) {
-      slots[child.props.slot].push(child);
-    } else if (child.props && child.props.children) {
-      const foundSlides = processChildren(child.props.children);
-
-      if (foundSlides.length > 0) {
-        foundSlides.forEach(slide => slides.push(slide));
-      } else {
-        slots['container-end'].push(child);
-      }
-    } else {
-      slots['container-end'].push(child);
-    }
-  });
-  return {
-    slides,
-    slots
-  };
-}
-
-
-
-/***/ }),
-
-/***/ "./node_modules/swiper/react/loop.js":
-/*!*******************************************!*\
-  !*** ./node_modules/swiper/react/loop.js ***!
-  \*******************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "calcLoopedSlides": function() { return /* reexport safe */ _shared_calc_looped_slides_js__WEBPACK_IMPORTED_MODULE_1__.calcLoopedSlides; },
-/* harmony export */   "renderLoop": function() { return /* binding */ renderLoop; }
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var _shared_calc_looped_slides_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/calc-looped-slides.js */ "./node_modules/swiper/shared/calc-looped-slides.js");
-
-
-
-function renderLoop(swiper, slides, swiperParams) {
-  const modifiedSlides = slides.map((child, index) => {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.cloneElement(child, {
-      swiper,
-      'data-swiper-slide-index': index
-    });
-  });
-
-  function duplicateSlide(child, index, position) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.cloneElement(child, {
-      key: `${child.key}-duplicate-${index}-${position}`,
-      className: `${child.props.className || ''} ${swiperParams.slideDuplicateClass}`
-    });
-  }
-
-  if (swiperParams.loopFillGroupWithBlank) {
-    const blankSlidesNum = swiperParams.slidesPerGroup - modifiedSlides.length % swiperParams.slidesPerGroup;
-
-    if (blankSlidesNum !== swiperParams.slidesPerGroup) {
-      for (let i = 0; i < blankSlidesNum; i += 1) {
-        const blankSlide = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: `${swiperParams.slideClass} ${swiperParams.slideBlankClass}`
-        });
-        modifiedSlides.push(blankSlide);
-      }
-    }
-  }
-
-  if (swiperParams.slidesPerView === 'auto' && !swiperParams.loopedSlides) {
-    swiperParams.loopedSlides = modifiedSlides.length;
-  }
-
-  const loopedSlides = (0,_shared_calc_looped_slides_js__WEBPACK_IMPORTED_MODULE_1__.calcLoopedSlides)(modifiedSlides, swiperParams);
-  const prependSlides = [];
-  const appendSlides = [];
-
-  for (let i = 0; i < loopedSlides; i += 1) {
-    const index = i - Math.floor(i / modifiedSlides.length) * modifiedSlides.length;
-    appendSlides.push(duplicateSlide(modifiedSlides[index], i, 'append'));
-    prependSlides.unshift(duplicateSlide(modifiedSlides[modifiedSlides.length - index - 1], i, 'prepend'));
-  }
-
-  if (swiper) {
-    swiper.loopedSlides = loopedSlides;
-  }
-
-  return [...prependSlides, ...modifiedSlides, ...appendSlides];
-}
-
-
-
-/***/ }),
-
-/***/ "./node_modules/swiper/react/swiper-react.js":
-/*!***************************************************!*\
-  !*** ./node_modules/swiper/react/swiper-react.js ***!
-  \***************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Swiper": function() { return /* reexport safe */ _swiper_js__WEBPACK_IMPORTED_MODULE_0__.Swiper; },
-/* harmony export */   "SwiperSlide": function() { return /* reexport safe */ _swiper_slide_js__WEBPACK_IMPORTED_MODULE_1__.SwiperSlide; },
-/* harmony export */   "useSwiper": function() { return /* reexport safe */ _context_js__WEBPACK_IMPORTED_MODULE_2__.useSwiper; },
-/* harmony export */   "useSwiperSlide": function() { return /* reexport safe */ _context_js__WEBPACK_IMPORTED_MODULE_2__.useSwiperSlide; }
-/* harmony export */ });
-/* harmony import */ var _swiper_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./swiper.js */ "./node_modules/swiper/react/swiper.js");
-/* harmony import */ var _swiper_slide_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./swiper-slide.js */ "./node_modules/swiper/react/swiper-slide.js");
-/* harmony import */ var _context_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./context.js */ "./node_modules/swiper/react/context.js");
-/**
- * Swiper React 8.4.4
- * Most modern mobile touch slider and framework with hardware accelerated transitions
- * https://swiperjs.com
- *
- * Copyright 2014-2022 Vladimir Kharlampidi
- *
- * Released under the MIT License
- *
- * Released on: October 12, 2022
- */
-
-
-
-
-
-
-/***/ }),
-
-/***/ "./node_modules/swiper/react/swiper-slide.js":
-/*!***************************************************!*\
-  !*** ./node_modules/swiper/react/swiper-slide.js ***!
-  \***************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SwiperSlide": function() { return /* binding */ SwiperSlide; }
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var _components_shared_utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components-shared/utils.js */ "./node_modules/swiper/components-shared/utils.js");
-/* harmony import */ var _use_isomorphic_layout_effect_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./use-isomorphic-layout-effect.js */ "./node_modules/swiper/react/use-isomorphic-layout-effect.js");
-/* harmony import */ var _context_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./context.js */ "./node_modules/swiper/react/context.js");
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-
-
-
-
-const SwiperSlide = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(function (_temp, externalRef) {
-  let {
-    tag: Tag = 'div',
-    children,
-    className = '',
-    swiper,
-    zoom,
-    virtualIndex,
-    ...rest
-  } = _temp === void 0 ? {} : _temp;
-  const slideElRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  const [slideClasses, setSlideClasses] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('swiper-slide');
-
-  function updateClasses(_s, el, classNames) {
-    if (el === slideElRef.current) {
-      setSlideClasses(classNames);
-    }
-  }
-
-  (0,_use_isomorphic_layout_effect_js__WEBPACK_IMPORTED_MODULE_2__.useIsomorphicLayoutEffect)(() => {
-    if (externalRef) {
-      externalRef.current = slideElRef.current;
-    }
-
-    if (!slideElRef.current || !swiper) {
-      return;
-    }
-
-    if (swiper.destroyed) {
-      if (slideClasses !== 'swiper-slide') {
-        setSlideClasses('swiper-slide');
-      }
-
-      return;
-    }
-
-    swiper.on('_slideClass', updateClasses); // eslint-disable-next-line
-
-    return () => {
-      if (!swiper) return;
-      swiper.off('_slideClass', updateClasses);
-    };
-  });
-  (0,_use_isomorphic_layout_effect_js__WEBPACK_IMPORTED_MODULE_2__.useIsomorphicLayoutEffect)(() => {
-    if (swiper && slideElRef.current && !swiper.destroyed) {
-      setSlideClasses(swiper.getSlideClasses(slideElRef.current));
-    }
-  }, [swiper]);
-  const slideData = {
-    isActive: slideClasses.indexOf('swiper-slide-active') >= 0 || slideClasses.indexOf('swiper-slide-duplicate-active') >= 0,
-    isVisible: slideClasses.indexOf('swiper-slide-visible') >= 0,
-    isDuplicate: slideClasses.indexOf('swiper-slide-duplicate') >= 0,
-    isPrev: slideClasses.indexOf('swiper-slide-prev') >= 0 || slideClasses.indexOf('swiper-slide-duplicate-prev') >= 0,
-    isNext: slideClasses.indexOf('swiper-slide-next') >= 0 || slideClasses.indexOf('swiper-slide-duplicate-next') >= 0
-  };
-
-  const renderChildren = () => {
-    return typeof children === 'function' ? children(slideData) : children;
-  };
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Tag, _extends({
-    ref: slideElRef,
-    className: (0,_components_shared_utils_js__WEBPACK_IMPORTED_MODULE_1__.uniqueClasses)(`${slideClasses}${className ? ` ${className}` : ''}`),
-    "data-swiper-slide-index": virtualIndex
-  }, rest), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_context_js__WEBPACK_IMPORTED_MODULE_3__.SwiperSlideContext.Provider, {
-    value: slideData
-  }, zoom ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "swiper-zoom-container",
-    "data-swiper-zoom": typeof zoom === 'number' ? zoom : undefined
-  }, renderChildren()) : renderChildren()));
-});
-SwiperSlide.displayName = 'SwiperSlide';
-
-
-/***/ }),
-
-/***/ "./node_modules/swiper/react/swiper.js":
-/*!*********************************************!*\
-  !*** ./node_modules/swiper/react/swiper.js ***!
-  \*********************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Swiper": function() { return /* binding */ Swiper; }
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
-/* harmony import */ var _components_shared_get_params_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components-shared/get-params.js */ "./node_modules/swiper/components-shared/get-params.js");
-/* harmony import */ var _components_shared_mount_swiper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components-shared/mount-swiper.js */ "./node_modules/swiper/components-shared/mount-swiper.js");
-/* harmony import */ var _components_shared_utils_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components-shared/utils.js */ "./node_modules/swiper/components-shared/utils.js");
-/* harmony import */ var _loop_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./loop.js */ "./node_modules/swiper/react/loop.js");
-/* harmony import */ var _components_shared_get_changed_params_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components-shared/get-changed-params.js */ "./node_modules/swiper/components-shared/get-changed-params.js");
-/* harmony import */ var _get_children_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./get-children.js */ "./node_modules/swiper/react/get-children.js");
-/* harmony import */ var _components_shared_update_swiper_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components-shared/update-swiper.js */ "./node_modules/swiper/components-shared/update-swiper.js");
-/* harmony import */ var _virtual_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./virtual.js */ "./node_modules/swiper/react/virtual.js");
-/* harmony import */ var _components_shared_update_on_virtual_data_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components-shared/update-on-virtual-data.js */ "./node_modules/swiper/components-shared/update-on-virtual-data.js");
-/* harmony import */ var _use_isomorphic_layout_effect_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./use-isomorphic-layout-effect.js */ "./node_modules/swiper/react/use-isomorphic-layout-effect.js");
-/* harmony import */ var _context_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./context.js */ "./node_modules/swiper/react/context.js");
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const Swiper = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(function (_temp, externalElRef) {
-  let {
-    className,
-    tag: Tag = 'div',
-    wrapperTag: WrapperTag = 'div',
-    children,
-    onSwiper,
-    ...rest
-  } = _temp === void 0 ? {} : _temp;
-  let eventsAssigned = false;
-  const [containerClasses, setContainerClasses] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('swiper');
-  const [virtualData, setVirtualData] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-  const [breakpointChanged, setBreakpointChanged] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const initializedRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(false);
-  const swiperElRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  const swiperRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  const oldPassedParamsRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  const oldSlides = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  const nextElRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  const prevElRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  const paginationElRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  const scrollbarElRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  const {
-    params: swiperParams,
-    passedParams,
-    rest: restProps,
-    events
-  } = (0,_components_shared_get_params_js__WEBPACK_IMPORTED_MODULE_2__.getParams)(rest);
-  const {
-    slides,
-    slots
-  } = (0,_get_children_js__WEBPACK_IMPORTED_MODULE_7__.getChildren)(children);
-
-  const onBeforeBreakpoint = () => {
-    setBreakpointChanged(!breakpointChanged);
-  };
-
-  Object.assign(swiperParams.on, {
-    _containerClasses(swiper, classes) {
-      setContainerClasses(classes);
-    }
-
-  });
-
-  const initSwiper = () => {
-    // init swiper
-    Object.assign(swiperParams.on, events);
-    eventsAssigned = true;
-    swiperRef.current = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"](swiperParams);
-
-    swiperRef.current.loopCreate = () => {};
-
-    swiperRef.current.loopDestroy = () => {};
-
-    if (swiperParams.loop) {
-      swiperRef.current.loopedSlides = (0,_loop_js__WEBPACK_IMPORTED_MODULE_5__.calcLoopedSlides)(slides, swiperParams);
-    }
-
-    if (swiperRef.current.virtual && swiperRef.current.params.virtual.enabled) {
-      swiperRef.current.virtual.slides = slides;
-      const extendWith = {
-        cache: false,
-        slides,
-        renderExternal: setVirtualData,
-        renderExternalUpdate: false
-      };
-      (0,_components_shared_utils_js__WEBPACK_IMPORTED_MODULE_4__.extend)(swiperRef.current.params.virtual, extendWith);
-      (0,_components_shared_utils_js__WEBPACK_IMPORTED_MODULE_4__.extend)(swiperRef.current.originalParams.virtual, extendWith);
-    }
-  };
-
-  if (!swiperElRef.current) {
-    initSwiper();
-  } // Listen for breakpoints change
-
-
-  if (swiperRef.current) {
-    swiperRef.current.on('_beforeBreakpoint', onBeforeBreakpoint);
-  }
-
-  const attachEvents = () => {
-    if (eventsAssigned || !events || !swiperRef.current) return;
-    Object.keys(events).forEach(eventName => {
-      swiperRef.current.on(eventName, events[eventName]);
-    });
-  };
-
-  const detachEvents = () => {
-    if (!events || !swiperRef.current) return;
-    Object.keys(events).forEach(eventName => {
-      swiperRef.current.off(eventName, events[eventName]);
-    });
-  };
-
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    return () => {
-      if (swiperRef.current) swiperRef.current.off('_beforeBreakpoint', onBeforeBreakpoint);
-    };
-  }); // set initialized flag
-
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (!initializedRef.current && swiperRef.current) {
-      swiperRef.current.emitSlidesClasses();
-      initializedRef.current = true;
-    }
-  }); // mount swiper
-
-  (0,_use_isomorphic_layout_effect_js__WEBPACK_IMPORTED_MODULE_11__.useIsomorphicLayoutEffect)(() => {
-    if (externalElRef) {
-      externalElRef.current = swiperElRef.current;
-    }
-
-    if (!swiperElRef.current) return;
-
-    if (swiperRef.current.destroyed) {
-      initSwiper();
-    }
-
-    (0,_components_shared_mount_swiper_js__WEBPACK_IMPORTED_MODULE_3__.mountSwiper)({
-      el: swiperElRef.current,
-      nextEl: nextElRef.current,
-      prevEl: prevElRef.current,
-      paginationEl: paginationElRef.current,
-      scrollbarEl: scrollbarElRef.current,
-      swiper: swiperRef.current
-    }, swiperParams);
-    if (onSwiper) onSwiper(swiperRef.current); // eslint-disable-next-line
-
-    return () => {
-      if (swiperRef.current && !swiperRef.current.destroyed) {
-        swiperRef.current.destroy(true, false);
-      }
-    };
-  }, []); // watch for params change
-
-  (0,_use_isomorphic_layout_effect_js__WEBPACK_IMPORTED_MODULE_11__.useIsomorphicLayoutEffect)(() => {
-    attachEvents();
-    const changedParams = (0,_components_shared_get_changed_params_js__WEBPACK_IMPORTED_MODULE_6__.getChangedParams)(passedParams, oldPassedParamsRef.current, slides, oldSlides.current, c => c.key);
-    oldPassedParamsRef.current = passedParams;
-    oldSlides.current = slides;
-
-    if (changedParams.length && swiperRef.current && !swiperRef.current.destroyed) {
-      (0,_components_shared_update_swiper_js__WEBPACK_IMPORTED_MODULE_8__.updateSwiper)({
-        swiper: swiperRef.current,
-        slides,
-        passedParams,
-        changedParams,
-        nextEl: nextElRef.current,
-        prevEl: prevElRef.current,
-        scrollbarEl: scrollbarElRef.current,
-        paginationEl: paginationElRef.current
-      });
-    }
-
-    return () => {
-      detachEvents();
-    };
-  }); // update on virtual update
-
-  (0,_use_isomorphic_layout_effect_js__WEBPACK_IMPORTED_MODULE_11__.useIsomorphicLayoutEffect)(() => {
-    (0,_components_shared_update_on_virtual_data_js__WEBPACK_IMPORTED_MODULE_10__.updateOnVirtualData)(swiperRef.current);
-  }, [virtualData]); // bypass swiper instance to slides
-
-  function renderSlides() {
-    if (swiperParams.virtual) {
-      return (0,_virtual_js__WEBPACK_IMPORTED_MODULE_9__.renderVirtual)(swiperRef.current, slides, virtualData);
-    }
-
-    if (!swiperParams.loop || swiperRef.current && swiperRef.current.destroyed) {
-      return slides.map(child => {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.cloneElement(child, {
-          swiper: swiperRef.current
-        });
-      });
-    }
-
-    return (0,_loop_js__WEBPACK_IMPORTED_MODULE_5__.renderLoop)(swiperRef.current, slides, swiperParams);
-  }
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Tag, _extends({
-    ref: swiperElRef,
-    className: (0,_components_shared_utils_js__WEBPACK_IMPORTED_MODULE_4__.uniqueClasses)(`${containerClasses}${className ? ` ${className}` : ''}`)
-  }, restProps), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_context_js__WEBPACK_IMPORTED_MODULE_12__.SwiperContext.Provider, {
-    value: swiperRef.current
-  }, slots['container-start'], /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(WrapperTag, {
-    className: "swiper-wrapper"
-  }, slots['wrapper-start'], renderSlides(), slots['wrapper-end']), (0,_components_shared_utils_js__WEBPACK_IMPORTED_MODULE_4__.needsNavigation)(swiperParams) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    ref: prevElRef,
-    className: "swiper-button-prev"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    ref: nextElRef,
-    className: "swiper-button-next"
-  })), (0,_components_shared_utils_js__WEBPACK_IMPORTED_MODULE_4__.needsScrollbar)(swiperParams) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    ref: scrollbarElRef,
-    className: "swiper-scrollbar"
-  }), (0,_components_shared_utils_js__WEBPACK_IMPORTED_MODULE_4__.needsPagination)(swiperParams) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    ref: paginationElRef,
-    className: "swiper-pagination"
-  }), slots['container-end']));
-});
-Swiper.displayName = 'Swiper';
-
-
-/***/ }),
-
-/***/ "./node_modules/swiper/react/use-isomorphic-layout-effect.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/swiper/react/use-isomorphic-layout-effect.js ***!
-  \*******************************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "useIsomorphicLayoutEffect": function() { return /* binding */ useIsomorphicLayoutEffect; }
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-
-
-function useIsomorphicLayoutEffect(callback, deps) {
-  // eslint-disable-next-line
-  if (typeof window === 'undefined') return (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(callback, deps);
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.useLayoutEffect)(callback, deps);
-}
-
-
-
-/***/ }),
-
-/***/ "./node_modules/swiper/react/virtual.js":
-/*!**********************************************!*\
-  !*** ./node_modules/swiper/react/virtual.js ***!
-  \**********************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "renderVirtual": function() { return /* binding */ renderVirtual; }
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-
-
-function renderVirtual(swiper, slides, virtualData) {
-  if (!virtualData) return null;
-  const style = swiper.isHorizontal() ? {
-    [swiper.rtlTranslate ? 'right' : 'left']: `${virtualData.offset}px`
-  } : {
-    top: `${virtualData.offset}px`
-  };
-  return slides.filter((child, index) => index >= virtualData.from && index <= virtualData.to).map(child => {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.cloneElement(child, {
-      swiper,
-      style
-    });
-  });
-}
-
-
-
-/***/ }),
-
-/***/ "./node_modules/swiper/shared/calc-looped-slides.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/swiper/shared/calc-looped-slides.js ***!
-  \**********************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "calcLoopedSlides": function() { return /* binding */ calcLoopedSlides; }
-/* harmony export */ });
-/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
-
-const calcLoopedSlides = (slides, swiperParams) => {
-  let slidesPerViewParams = swiperParams.slidesPerView;
-
-  if (swiperParams.breakpoints) {
-    const breakpoint = swiper__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.getBreakpoint(swiperParams.breakpoints);
-    const breakpointOnlyParams = breakpoint in swiperParams.breakpoints ? swiperParams.breakpoints[breakpoint] : undefined;
-
-    if (breakpointOnlyParams && breakpointOnlyParams.slidesPerView) {
-      slidesPerViewParams = breakpointOnlyParams.slidesPerView;
-    }
-  }
-
-  let loopedSlides = Math.ceil(parseFloat(swiperParams.loopedSlides || slidesPerViewParams, 10));
-  loopedSlides += swiperParams.loopAdditionalSlides;
-
-  if (loopedSlides > slides.length && swiperParams.loopedSlidesLimit) {
-    loopedSlides = slides.length;
-  }
-
-  return loopedSlides;
-};
-
-/***/ }),
-
 /***/ "./node_modules/swiper/shared/classes-to-selector.js":
 /*!***********************************************************!*\
   !*** ./node_modules/swiper/shared/classes-to-selector.js ***!
@@ -14340,7 +13300,7 @@ __webpack_require__.r(__webpack_exports__);
   \************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"create-block/wp-gutenberg-carusel","version":"0.1.0","title":"WPG Carousel","category":"media","icon":"image-flip-horizontal","description":"A gutenberg block carousel","supports":{"html":false},"textdomain":"wp-gutenberg-carousel","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"contentAlign":{"type":"string","default":"center"},"numberOfColumns":{"type":"number","default":3},"wpgCarousel":{"type":"array","default":[{"itemTitle":"Slide Title","itemDetails":"Slide Description... ","itemIndex":0,"imageURL":"","linkURL":"http://www.example.com"}]},"blockAlign":{"type":"string","default":"none"}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"create-block/wp-gutenberg-carusel","version":"1.0.3","title":"WPG Carousel","category":"media","icon":"image-flip-horizontal","description":"A gutenberg block carousel","supports":{"html":false},"textdomain":"wp-gutenberg-carousel","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"contentAlign":{"type":"string","default":"center"},"numberOfColumns":{"type":"number","default":3},"wpgCarousel":{"type":"array","default":[{"itemTitle":"Slide Title","itemDetails":"Slide Description... ","itemIndex":0,"imageURL":"","linkURL":"http://www.example.com"}]},"blockAlign":{"type":"string","default":"none"}}}');
 
 /***/ })
 
