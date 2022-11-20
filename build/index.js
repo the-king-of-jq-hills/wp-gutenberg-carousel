@@ -114,7 +114,7 @@ function Edit(_ref) {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev"
     },
-    slidesPerView: wpgcColumns,
+    slidesPerView: numberOfColumns,
     spaceBetween: 32,
     a11y: true,
     breakpoints: {
@@ -125,7 +125,7 @@ function Edit(_ref) {
       },
       // when window width is >= 640px
       768: {
-        slidesPerView: wpgcColumns,
+        slidesPerView: numberOfColumns,
         spaceBetween: 32
       }
     },
