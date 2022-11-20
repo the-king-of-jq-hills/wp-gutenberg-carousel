@@ -2,14 +2,6 @@ import { __ } from '@wordpress/i18n';
 
 import { useBlockProps } from '@wordpress/block-editor';
 
-import noImage from './missing.webp';
-
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-
 /**
  * The save function defines the way in which the different attributes should
  */
