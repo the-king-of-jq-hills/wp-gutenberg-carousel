@@ -13,6 +13,13 @@ Reapter control with media field using array of objects attribute
 Languages : React and SCSS
 
 
+== Screenshots ==
+
+![Editor View](https://raw.githubusercontent.com/the-king-of-jq-hills/wp-gutenberg-carousel/master/assets/screenshot-1.jpg?raw=true)
+
+![Frontend View](https://raw.githubusercontent.com/the-king-of-jq-hills/wp-gutenberg-carousel/master/assets/screenshot-2.jpg?raw=true)
+
+
 == Changelog ==
 
 = 0.1.0 =
