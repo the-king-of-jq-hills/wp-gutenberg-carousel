@@ -1,10 +1,10 @@
 # WP Gutenberg Carousel
-###### Contributors:      marsian
-###### Tags:              block, gutenberg, react, carousel
-###### Tested up to:      6.1
-###### Stable tag:        1.0.3
-###### License:           GPL-2.0-or-later
-###### License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+<div>Contributors:      marsian</div>
+<div>Tags:              block, gutenberg, react, carousel</div>
+<div>Tested up to:      6.1</div>
+<div>Stable tag:        1.0.3</div>
+<div>License:           GPL-2.0-or-later</div>
+<div>License URI:       https://www.gnu.org/licenses/gpl-2.0.html</div>
 
 <p>A gutenberg carousel block</p>
 
