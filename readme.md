@@ -1,10 +1,10 @@
-#WP Gutenberg Carousel
-######Contributors:      marsian
-######Tags:              block, gutenberg, react, carousel
-######Tested up to:      6.1
-######Stable tag:        1.0.3
-######License:           GPL-2.0-or-later
-######License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+# WP Gutenberg Carousel
+###### Contributors:      marsian
+###### Tags:              block, gutenberg, react, carousel
+###### Tested up to:      6.1
+###### Stable tag:        1.0.3
+###### License:           GPL-2.0-or-later
+###### License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
 <p>A gutenberg carousel block</p>
 
@@ -13,18 +13,18 @@
 <p>Languages : React and SCSS</p>
 
 
-###Screenshots
+### Screenshots
 
-#####Editor View
+##### Editor View
 ![Editor View](https://raw.githubusercontent.com/the-king-of-jq-hills/wp-gutenberg-carousel/master/assets/screenshot-1.jpg?raw=true)
 
-#####Frontend View
+##### Frontend View
 ![Frontend View](https://raw.githubusercontent.com/the-king-of-jq-hills/wp-gutenberg-carousel/master/assets/screenshot-2.jpg?raw=true)
 
 
-###Changelog
+### Changelog
 
-####0.1.0 =
+#### 0.1.0 =
 * First Commit
 
 
