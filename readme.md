@@ -14,11 +14,11 @@
 
 ### Built With
 
-* [![ESNext]]
-* [![React]]
-* [![SCSS]]
-* [![JSX]]
-* [![PHP]]
+* [ESNext]
+* [React]
+* [SCSS]
+* [JSX]
+* [PHP]
 
 
 ### Screenshots
