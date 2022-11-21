@@ -6,11 +6,19 @@
 <div>License:           GPL-2.0-or-later</div>
 <div>License URI:       https://www.gnu.org/licenses/gpl-2.0.html</div>
 
+### Description
+
 <p>A gutenberg carousel block</p>
 
 <p>Reapter control with media field using array of objects attribute</p>
 
-<p>Languages : React and SCSS</p>
+### Built With
+
+* [![ESNext]]
+* [![React]]
+* [![SCSS]]
+* [![JSX]]
+* [![PHP]]
 
 
 ### Screenshots
